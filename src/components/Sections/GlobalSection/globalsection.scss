@@ -1,0 +1,41 @@
+#global {
+  width: 100%;
+  min-height: 100vh;
+
+  table {
+    display: flex;
+  }
+
+  th,
+  td,
+  p {
+    width: 100%;
+    padding: 5px;
+  }
+
+  th {
+    text-align: left;
+    font-weight: normal;
+    background-color: var(--lightblue);
+  }
+
+  td {
+    text-align: right;
+    font-weight: bold;
+    background-color: var(--lightgray);
+  }
+
+  p {
+    margin: 10px 0;
+    text-align: right;
+    font-size: var(--fontsize-s);
+    color: var(--darkgray);
+  }
+}
+
+.graph {
+  width: 100%;
+  height: 500px;
+  background: rgb(123, 123, 123);
+  margin-bottom: var(--margin-m);
+}
