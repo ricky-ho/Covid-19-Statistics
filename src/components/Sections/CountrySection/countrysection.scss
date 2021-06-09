@@ -1,0 +1,60 @@
+#countries {
+  margin-top: var(--margin-l);
+}
+
+.country-card {
+  display: block;
+  text-align: left;
+  outline: none;
+  border: none;
+  width: 100%;
+  color: var(--black);
+  background: rgb(225, 225, 225);
+  padding: var(--padding-s);
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+
+  h3 {
+    font-family: "Roboto", "Times New Roman", Times, serif;
+    font-size: var(--fontsize-m);
+    font-weight: normal;
+    margin-bottom: var(--margin-xs);
+    letter-spacing: 1px;
+  }
+
+  tr {
+    background: var(--white);
+  }
+
+  th,
+  td {
+    font-family: "Roboto", "Times New Roman", Times, serif;
+    width: 100%;
+    font-size: var(--fontsize-s);
+    font-weight: normal;
+    padding: var(--padding-xs);
+  }
+
+  td {
+    min-width: 75px;
+    text-align: right;
+  }
+
+  p {
+    text-align: right;
+    padding-top: var(--padding-s);
+    padding-right: var(--padding-xs);
+    font-size: var(--fontsize-s);
+  }
+
+  &:not(:last-child) {
+    margin-bottom: var(--margin-m);
+  }
+
+  &:focus,
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3),
+      0px 0px 4px -1px rgba(0, 0, 0, 0.4);
+  }
+}

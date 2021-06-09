@@ -1,3 +1,4 @@
+import Graph from "../../Graphs";
 import { convertToLocaleString } from "../../../utils/format";
 
 import "./globalsection.scss";
@@ -22,7 +23,7 @@ const GlobalSection = ({ data }) => {
   return (
     <section id="global">
       <h2>Global Statistics</h2>
-      <div className="graph"></div>
+      <Graph type="line" data={timeline} />
       <table>
         <tbody>
           <tr>

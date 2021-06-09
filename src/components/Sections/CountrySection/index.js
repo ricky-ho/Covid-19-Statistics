@@ -1,12 +1,16 @@
 import { convertToLocaleString } from "../../../utils/format";
 
+import "./countrysection.scss";
+
 const CountrySection = ({ data }) => {
   return (
     <section id="countries">
       <h2>Countries</h2>
-      {data.map((country, index) => (
-        <Country key={index} data={country} />
-      ))}
+      <div className="countries__inner">
+        {data.map((country, index) => (
+          <Country key={index} data={country} />
+        ))}
+      </div>
     </section>
   );
 };
@@ -26,17 +30,38 @@ const Country = ({ data }) => {
   };
 
   return (
-    <div>
+    <a
+      href={`#countries`}
+      className="country-card"
+      data-country={data.location}
+    >
       <h3>{data.location}</h3>
-      <p>{`Latest update: ${filtered_data.date}`}</p>
-      <p>{`Total cases: ${filtered_data.total_cases}`}</p>
-      <p>{`New cases: ${filtered_data.new_cases}`}</p>
-      <p>{`Total deaths: ${filtered_data.total_deaths} `}</p>
-      <p>{`New deaths: ${filtered_data.new_deaths} `}</p>
-      <p>{`Total vaccinations: ${filtered_data.total_vaccinations}`}</p>
-      <p>{`People vaccinated: ${filtered_data.people_vaccinated}`}</p>
-      <p>{`People fully vaccinated: ${filtered_data.people_fully_vaccinated}`}</p>
-    </div>
+      <table>
+        <tbody>
+          <tr>
+            <th>Total cases:</th>
+            <td>{filtered_data.total_cases}</td>
+          </tr>
+          <tr>
+            <th>Total deaths:</th>
+            <td>{filtered_data.total_deaths}</td>
+          </tr>
+          <tr>
+            <th>Total vaccines administered:</th>
+            <td>{filtered_data.total_vaccinations}</td>
+          </tr>
+          <tr>
+            <th>People vaccinated:</th>
+            <td>{filtered_data.people_vaccinated}</td>
+          </tr>
+          <tr>
+            <th>People fully vaccinated:</th>
+            <td>{filtered_data.people_fully_vaccinated}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>{`Information as of: ${filtered_data.date}`}</p>
+    </a>
   );
 };
 

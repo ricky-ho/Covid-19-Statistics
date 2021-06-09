@@ -5,16 +5,17 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Open sans", sans-serif;
 }
 
 :root {
-  --padding-l: 50px;
-  --padding-m: 25px;
-  --padding-s: 15px;
+  --padding-l: 25px;
+  --padding-m: 15px;
+  --padding-s: 8px;
+  --padding-xs: 5px;
   --margin-l: 50px;
   --margin-m: 25px;
   --margin-s: 15px;
+  --margin-xs: 10px;
   --font-primary: sans-serif;
   --font-secondary: sans-serif;
   --fontsize-xl: 2rem;
@@ -24,9 +25,12 @@
   --lightblue: rgb(198, 208, 240);
   --lightgray: rgb(237, 237, 237);
   --darkgray: rgb(60, 60, 60);
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
 }
 
 a {
+  cursor: pointer;
   text-decoration: none;
 }
 
