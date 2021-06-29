@@ -7,56 +7,80 @@ const GlobalSection = ({ data }) => {
   const timeline = data.data;
   const latest = timeline[timeline.length - 2];
 
-  const filtered_data = {
-    date: latest.date,
-    total_cases: convertToLocaleString(latest.total_cases),
-    new_cases: convertToLocaleString(latest.new_cases),
-    total_deaths: convertToLocaleString(latest.total_deaths),
-    new_deaths: convertToLocaleString(latest.new_deaths),
-    total_vaccinations: convertToLocaleString(latest.total_vaccinations),
-    people_vaccinated: convertToLocaleString(latest.people_vaccinated),
-    people_fully_vaccinated: convertToLocaleString(
-      latest.people_fully_vaccinated
-    ),
-  };
+  const cases = [
+    {
+      description: "total cases",
+      data: convertToLocaleString(latest.total_cases),
+    },
+    {
+      description: "new cases",
+      data: convertToLocaleString(latest.new_cases),
+    },
+  ];
+
+  const deaths = [
+    {
+      description: "total deaths",
+      data: convertToLocaleString(latest.total_deaths),
+    },
+    {
+      description: "new deaths",
+      data: convertToLocaleString(latest.new_deaths),
+    },
+  ];
+
+  const vaccinations = [
+    {
+      description: "vaccines administered",
+      data: convertToLocaleString(latest.total_vaccinations),
+    },
+    {
+      description: "people received at least 1 dose",
+      data: convertToLocaleString(latest.people_vaccinated),
+    },
+    {
+      description: "people fully vaccinated",
+      data: convertToLocaleString(latest.people_fully_vaccinated),
+    },
+  ];
 
   return (
     <section id="global">
-      <h2>Global Statistics</h2>
-      <Graph type="line" data={timeline} />
-      <table>
-        <tbody>
-          <tr>
-            <th>{`Total cases: `}</th>
-            <td>{filtered_data.total_cases}</td>
-          </tr>
-          <tr>
-            <th>{`New cases: `}</th>
-            <td>{filtered_data.new_cases}</td>
-          </tr>
-          <tr>
-            <th>{`Total deaths: `}</th>
-            <td>{filtered_data.total_deaths}</td>
-          </tr>
-          <tr>
-            <th>{`New deaths: `}</th>
-            <td>{filtered_data.new_deaths}</td>
-          </tr>
-          <tr>
-            <th>{`Total vaccines administered: `}</th>
-            <td>{filtered_data.total_vaccinations}</td>
-          </tr>
-          <tr>
-            <th>{`People vaccinated: `}</th>
-            <td>{filtered_data.people_vaccinated}</td>
-          </tr>
-          <tr>
-            <th>{`People fully vaccinated: `}</th>
-            <td>{filtered_data.people_fully_vaccinated}</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>{`Last updated: ${filtered_data.date}`}</p>
+      <div>
+        <h2>Global Situation</h2>
+        <p>Information as of {latest.date}</p>
+      </div>
+      <Graph
+        title="Cases"
+        options={[
+          { label: "Cumulative", value: "total_cases" },
+          { label: "Daily", value: "new_cases" },
+        ]}
+        data={timeline}
+        latest={cases}
+      />
+      <Graph
+        title="Deaths"
+        options={[
+          { label: "Cumulative", value: "total_deaths" },
+          { label: "Daily", value: "new_deaths" },
+        ]}
+        data={timeline}
+        latest={deaths}
+      />
+      <Graph
+        title="Vaccinations"
+        options={[
+          { label: "Vaccines administered", value: "total_vaccinations" },
+          { label: "People vaccinated", value: "people_vaccinated" },
+          {
+            label: "People fully vaccinated",
+            value: "people_fully_vaccinated",
+          },
+        ]}
+        data={timeline.filter((item) => item.total_vaccinations >= 0)}
+        latest={vaccinations}
+      />
     </section>
   );
 };

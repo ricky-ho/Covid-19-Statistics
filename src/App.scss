@@ -5,6 +5,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 :root {
@@ -16,15 +17,15 @@
   --margin-m: 25px;
   --margin-s: 15px;
   --margin-xs: 10px;
-  --font-primary: sans-serif;
+  --font-primary: "Roboto";
   --font-secondary: sans-serif;
   --fontsize-xl: 2rem;
   --fontsize-l: 1.5rem;
   --fontsize-m: 1.25rem;
   --fontsize-s: 0.85rem;
   --lightblue: rgb(198, 208, 240);
-  --lightgray: rgb(237, 237, 237);
-  --darkgray: rgb(60, 60, 60);
+  --lightgray: rgb(200, 200, 200);
+  --darkgray: rgb(104, 104, 104);
   --white: rgb(255, 255, 255);
   --black: rgb(0, 0, 0);
 }

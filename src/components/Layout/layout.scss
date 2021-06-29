@@ -6,13 +6,12 @@ main {
 }
 
 h2 {
-  font-family: "Montserrat", "Times New Roman", Times, serif;
   font-size: var(--fontsize-xl);
-  margin-bottom: var(--margin-s);
+  margin-bottom: var(--margin-m);
   font-weight: normal;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 501px) {
   main {
     padding: var(--padding-l);
   }

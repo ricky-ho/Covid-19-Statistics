@@ -5,6 +5,26 @@ import { fetchData, getGlobalData, getCountriesData } from "./utils/data";
 import { GlobalSection, CountrySection } from "./components/Sections";
 import "./App.scss";
 
+/* 
+  Features:
+    Overall
+    - Add config.js file to remove hardcoding graphs/data
+
+    Global
+    - Finish the graphs for the global statistics
+    - Format the dates on the graph/tooltip
+    - Add hover effect on active bar
+
+    Countries
+    - Add search feature to country table
+    - Sorting feature for country table
+    - Add accordion graph to country table on click
+
+  - Add responsiveness
+  - Check iOS compatibility
+  
+*/
+
 const App = () => {
   const [data, setData] = useState();
 
@@ -22,6 +42,7 @@ const App = () => {
       <CountrySection data={getCountriesData(data.latest_data)} />
     </>
   ) : null;
+  // Add a loading component
 
   return (
     <div className="App">
