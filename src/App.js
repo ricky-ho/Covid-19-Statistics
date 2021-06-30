@@ -17,7 +17,6 @@ import "./App.scss";
 
     Countries
     - Add search feature to country table
-    - Sorting feature for country table
     - Add accordion graph to country table on click
 
   - Add responsiveness
