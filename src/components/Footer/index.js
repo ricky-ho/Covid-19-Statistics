@@ -1,3 +1,5 @@
+import { AiOutlineGithub } from "react-icons/ai";
+
 import "./footer.scss";
 
 const Footer = () => {
@@ -14,14 +16,14 @@ const Footer = () => {
             Our World in Data
           </a>
         </p>
-
         <a
+          className="github-link"
           href="https://github.com/ricky-ho/covid-statistics"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn"
         >
-          View Source Code
+          <AiOutlineGithub size={30} />
+          <span>Source Code</span>
         </a>
       </div>
     </footer>

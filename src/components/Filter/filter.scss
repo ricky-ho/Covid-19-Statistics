@@ -1,0 +1,38 @@
+.filter-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.filter-select {
+  font-size: var(--fontsize-s);
+  height: 35px;
+  width: 200px;
+  border: 1px solid var(--lightgray);
+  border-radius: 5px;
+  padding: var(--padding-xs);
+  padding-left: 30px;
+  outline: none;
+  transition: all 0.15s ease-in;
+
+  option {
+    background: var(--white);
+    font-size: var(--fontsize-s);
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background: var(--lightgray);
+  }
+}
+
+.hi-sort {
+  position: absolute;
+  cursor: pointer;
+  margin-left: var(--margin-xs);
+
+  &:hover {
+    color: var(--lightblue);
+  }
+}

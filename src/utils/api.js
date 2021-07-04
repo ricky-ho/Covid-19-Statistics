@@ -30,6 +30,8 @@ export const getCountriesData = (data) => {
   return results;
 };
 
+/* Helper Functions */
+
 const fetchLatestData = async () => {
   const response = await fetch(
     "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json"

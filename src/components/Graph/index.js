@@ -8,33 +8,27 @@ import {
   YAxis,
   Tooltip,
   Bar,
-  CartesianGrid,
 } from "recharts";
 
 import "./graphs.scss";
 
-const Graph = ({ title, options, data, latest }) => {
+const Graph = ({ title, theme, options, data, latest }) => {
   const [graphData, setGraphData] = useState(options[0].value);
 
-  const handleDataChange = (e) => {
-    setGraphData(e.target.value);
-  };
+  const handleDataChange = (e) => setGraphData(e.target.value);
 
   return (
-    <div>
-      <h3>{title}</h3>
+    <div data-graph={title} className="graph-container">
       <div className="latest-info">
         {latest.map((obj, index) => (
           <p key={index}>
-            <span>{obj.data}</span>
-            {obj.description}
+            <span>{obj.data}</span> {obj.description}
           </p>
         ))}
       </div>
       <GraphControl options={options} handleDataChange={handleDataChange}>
         <ResponsiveContainer width={"100%"} height={250}>
-          <BarChart data={data} margin={{ top: 25, bottom: 25, left: 10 }}>
-            <CartesianGrid strokeDasharray="4 2" vertical={false} />
+          <BarChart data={data} margin={{ top: 30, bottom: 30, left: 10 }}>
             <XAxis
               dataKey="date"
               interval="preserveStart"
@@ -55,7 +49,7 @@ const Graph = ({ title, options, data, latest }) => {
               dataKey={graphData}
               name={graphData}
               onMouseOver={(e) => {}}
-              fill="rgb(123, 123, 123)"
+              fill={theme}
               isAnimationActive={false}
             />
           </BarChart>

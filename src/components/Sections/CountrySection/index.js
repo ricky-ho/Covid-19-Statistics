@@ -1,15 +1,61 @@
+import { useState, useEffect } from "react";
 import { convertToLocaleString } from "../../../utils/format";
+import Searchbar from "../../Searchbar";
+import Filter from "../../Filter";
 
 import "./countrysection.scss";
 
 const CountrySection = ({ data }) => {
+  const [countryData, setCountryData] = useState(data);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortAscending, setSortAscending] = useState(true);
+  const [sortValue, setSortValue] = useState("location");
+
+  useEffect(() => {
+    const filterDataByQuery = (country) => {
+      if (searchQuery === "") return country;
+      let reg = new RegExp(searchQuery, "gi");
+      return reg.test(country.location);
+    };
+
+    setCountryData(data.filter(filterDataByQuery));
+  }, [searchQuery, data]);
+
+  const customSort = (a, b) => {
+    let aValue = a[sortValue];
+    let bValue = b[sortValue];
+
+    switch (sortValue) {
+      case "location":
+        return sortAscending
+          ? aValue.localeCompare(bValue)
+          : bValue.localeCompare(aValue);
+      default:
+        return sortAscending ? aValue - bValue : bValue - aValue;
+    }
+  };
+
+  const toggleAscending = () => setSortAscending(!sortAscending);
+
   return (
     <section id="countries">
-      <h2>Countries</h2>
-      <div className="countries__inner">
-        {data.map((country, index) => (
-          <Country key={index} data={country} />
-        ))}
+      <h2>Statistics by Country</h2>
+      <div className="country-table__controls">
+        <Searchbar query={searchQuery} handleChange={setSearchQuery} />
+        <Filter
+          ascending={sortAscending}
+          toggleAscending={toggleAscending}
+          handleChange={setSortValue}
+        />
+      </div>
+      <div role="table" className="country-table">
+        {countryData.length ? (
+          countryData.sort(customSort).map((country, index) => {
+            return <Country key={index} data={country} />;
+          })
+        ) : (
+          <div className="no-results">No results found!</div>
+        )}
       </div>
     </section>
   );
@@ -18,50 +64,64 @@ const CountrySection = ({ data }) => {
 const Country = ({ data }) => {
   const filtered_data = {
     date: data.last_updated_date,
+    population: convertToLocaleString(data.population),
     total_cases: convertToLocaleString(data.total_cases),
     new_cases: convertToLocaleString(data.new_cases),
     total_deaths: convertToLocaleString(data.total_deaths),
     new_deaths: convertToLocaleString(data.new_deaths),
-    total_vaccinations: convertToLocaleString(data.total_vaccinations),
     people_vaccinated: convertToLocaleString(data.people_vaccinated),
     people_fully_vaccinated: convertToLocaleString(
       data.people_fully_vaccinated
     ),
+    people_fully_vaccinated_per_hundred:
+      data.people_fully_vaccinated_per_hundred,
   };
 
   return (
-    <a
-      href={`#countries`}
-      className="country-card"
-      data-country={data.location}
-    >
-      <h3>{data.location}</h3>
-      <table>
-        <tbody>
-          <tr>
-            <th>Total cases:</th>
-            <td>{filtered_data.total_cases}</td>
-          </tr>
-          <tr>
-            <th>Total deaths:</th>
-            <td>{filtered_data.total_deaths}</td>
-          </tr>
-          <tr>
-            <th>Total vaccines administered:</th>
-            <td>{filtered_data.total_vaccinations}</td>
-          </tr>
-          <tr>
-            <th>People vaccinated:</th>
-            <td>{filtered_data.people_vaccinated}</td>
-          </tr>
-          <tr>
-            <th>People fully vaccinated:</th>
-            <td>{filtered_data.people_fully_vaccinated}</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>{`Information as of: ${filtered_data.date}`}</p>
-    </a>
+    <>
+      <div data-country={data.location} className="country-card">
+        <h4>{data.location}</h4>
+
+        <div className="card__inner">
+          <table>
+            <tbody>
+              <tr>
+                <th>Population</th>
+                <td>{filtered_data.population || "-"}</td>
+              </tr>
+              <tr>
+                <th>Cases</th>
+                <td>{filtered_data.total_cases}</td>
+              </tr>
+              <tr>
+                <th>Deaths</th>
+                <td>{filtered_data.total_deaths}</td>
+              </tr>
+            </tbody>
+          </table>
+          <table>
+            <tbody>
+              <tr>
+                <th>People Vaccinated</th>
+                <td>{filtered_data.people_vaccinated}</td>
+              </tr>
+              <tr>
+                <th>People Fully Vaccinated</th>
+                <td>{filtered_data.people_fully_vaccinated}</td>
+              </tr>
+              <tr>
+                <th>% Fully Vaccinated</th>
+                <td>
+                  {filtered_data.people_fully_vaccinated_per_hundred
+                    ? `${filtered_data.people_fully_vaccinated_per_hundred}%`
+                    : "-"}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
   );
 };
 

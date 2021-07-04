@@ -1,4 +1,4 @@
-import Graph from "../../Graphs";
+import Graph from "../../Graph";
 import { convertToLocaleString } from "../../../utils/format";
 
 import "./globalsection.scss";
@@ -35,7 +35,7 @@ const GlobalSection = ({ data }) => {
       data: convertToLocaleString(latest.total_vaccinations),
     },
     {
-      description: "people received at least 1 dose",
+      description: "people received at least 1 vaccine dose",
       data: convertToLocaleString(latest.people_vaccinated),
     },
     {
@@ -46,12 +46,11 @@ const GlobalSection = ({ data }) => {
 
   return (
     <section id="global">
-      <div>
-        <h2>Global Situation</h2>
-        <p>Information as of {latest.date}</p>
-      </div>
+      <h2>Global Statistics</h2>
+
       <Graph
         title="Cases"
+        theme="rgb(90, 90, 90)"
         options={[
           { label: "Cumulative", value: "total_cases" },
           { label: "Daily", value: "new_cases" },
@@ -61,6 +60,7 @@ const GlobalSection = ({ data }) => {
       />
       <Graph
         title="Deaths"
+        theme="rgb(192, 26, 8)"
         options={[
           { label: "Cumulative", value: "total_deaths" },
           { label: "Daily", value: "new_deaths" },
@@ -70,6 +70,7 @@ const GlobalSection = ({ data }) => {
       />
       <Graph
         title="Vaccinations"
+        theme="rgb(0, 90, 0)"
         options={[
           { label: "Vaccines administered", value: "total_vaccinations" },
           { label: "People vaccinated", value: "people_vaccinated" },
