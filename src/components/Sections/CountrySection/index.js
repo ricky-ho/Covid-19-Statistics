@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { convertToLocaleString } from "../../../utils/format";
+import { formatNumber } from "../../../utils/format";
 import Searchbar from "../../Searchbar";
 import Filter from "../../Filter";
 
@@ -25,14 +25,12 @@ const CountrySection = ({ data }) => {
     let aValue = a[sortValue];
     let bValue = b[sortValue];
 
-    switch (sortValue) {
-      case "location":
-        return sortAscending
-          ? aValue.localeCompare(bValue)
-          : bValue.localeCompare(aValue);
-      default:
-        return sortAscending ? aValue - bValue : bValue - aValue;
+    if (sortValue === "location") {
+      return sortAscending
+        ? aValue.localeCompare(bValue)
+        : bValue.localeCompare(aValue);
     }
+    return sortAscending ? aValue - bValue : bValue - aValue;
   };
 
   const toggleAscending = () => setSortAscending(!sortAscending);
@@ -41,12 +39,12 @@ const CountrySection = ({ data }) => {
     <section id="countries">
       <h2>Statistics by Country</h2>
       <div className="country-table__controls">
-        <Searchbar query={searchQuery} handleChange={setSearchQuery} />
         <Filter
           ascending={sortAscending}
           toggleAscending={toggleAscending}
           handleChange={setSortValue}
         />
+        <Searchbar query={searchQuery} handleChange={setSearchQuery} />
       </div>
       <div role="table" className="country-table">
         {countryData.length ? (
@@ -64,15 +62,13 @@ const CountrySection = ({ data }) => {
 const Country = ({ data }) => {
   const filtered_data = {
     date: data.last_updated_date,
-    population: convertToLocaleString(data.population),
-    total_cases: convertToLocaleString(data.total_cases),
-    new_cases: convertToLocaleString(data.new_cases),
-    total_deaths: convertToLocaleString(data.total_deaths),
-    new_deaths: convertToLocaleString(data.new_deaths),
-    people_vaccinated: convertToLocaleString(data.people_vaccinated),
-    people_fully_vaccinated: convertToLocaleString(
-      data.people_fully_vaccinated
-    ),
+    population: formatNumber(data.population),
+    total_cases: formatNumber(data.total_cases),
+    new_cases: formatNumber(data.new_cases),
+    total_deaths: formatNumber(data.total_deaths),
+    new_deaths: formatNumber(data.new_deaths),
+    people_vaccinated: formatNumber(data.people_vaccinated),
+    people_fully_vaccinated: formatNumber(data.people_fully_vaccinated),
     people_fully_vaccinated_per_hundred:
       data.people_fully_vaccinated_per_hundred,
   };
@@ -80,7 +76,7 @@ const Country = ({ data }) => {
   return (
     <>
       <div data-country={data.location} className="country-card">
-        <h4>{data.location}</h4>
+        <h3>{data.location}</h3>
 
         <div className="card__inner">
           <table>

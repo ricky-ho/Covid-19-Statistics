@@ -13,20 +13,18 @@
   --padding-m: 15px;
   --padding-s: 8px;
   --padding-xs: 5px;
-  --margin-l: 50px;
+  --margin-l: 40px;
   --margin-m: 25px;
   --margin-s: 15px;
   --margin-xs: 10px;
-  --font-primary: "Roboto";
-  --font-secondary: sans-serif;
   --fontsize-xl: 2rem;
   --fontsize-l: 1.5rem;
   --fontsize-m: 1.25rem;
   --fontsize-s: 0.85rem;
   --fontsize-xs: 0.75rem;
-  --blue: rgb(55, 101, 255);
-  --green: rgb(0, 84, 0);
-  --red: rgb(192, 26, 8);
+  --blue: rgb(37, 80, 221);
+  --green: rgb(0, 100, 0);
+  --red: rgb(245, 43, 43);
   --lightgray: rgb(200, 200, 200);
   --darkgray: rgb(90, 90, 90);
   --white: rgb(255, 255, 255);
@@ -49,7 +47,7 @@ main {
 h2 {
   font-family: Helvetica, Arial, sans-serif;
   font-size: var(--fontsize-xl);
-  color: var(--darkgray);
+  color: var(--black);
   margin-bottom: var(--margin-m);
   font-weight: normal;
 }

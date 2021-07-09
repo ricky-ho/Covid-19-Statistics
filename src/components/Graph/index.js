@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { convertToLocaleString } from "../../utils/format";
+import { formatGraphTick, formatDate } from "../../utils/format";
+import CustomTooltip from "./CustomTooltip";
 import GraphControl from "./GraphControl";
 import {
   ResponsiveContainer,
@@ -27,29 +28,28 @@ const Graph = ({ title, theme, options, data, latest }) => {
         ))}
       </div>
       <GraphControl options={options} handleDataChange={handleDataChange}>
-        <ResponsiveContainer width={"100%"} height={250}>
-          <BarChart data={data} margin={{ top: 30, bottom: 30, left: 10 }}>
+        <ResponsiveContainer width={"100%"} height={300}>
+          <BarChart data={data} margin={{ top: 20, bottom: 20, left: 10 }}>
             <XAxis
               dataKey="date"
               interval="preserveStart"
+              tickFormatter={formatDate}
               tick={{ fontSize: 12 }}
               padding={{ left: 10, right: 10 }}
             />
             <YAxis
               orientation="right"
-              tickFormatter={(tick) =>
-                tick >= 10 ** 7
-                  ? `${tick / 1000000}M`
-                  : convertToLocaleString(tick)
-              }
+              tickFormatter={formatGraphTick}
               tick={{ fontSize: 12 }}
+              padding={{ top: 10 }}
             />
-            <Tooltip />
+            <Tooltip
+              content={<CustomTooltip />}
+              cursor={{ fill: "rgb(192, 26, 8)" }}
+            />
             <Bar
               dataKey={graphData}
-              name={graphData}
-              onMouseOver={(e) => {}}
-              fill={theme}
+              fill="rgba(100, 100, 100, 0.5)"
               isAnimationActive={false}
             />
           </BarChart>

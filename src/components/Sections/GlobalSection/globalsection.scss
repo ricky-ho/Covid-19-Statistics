@@ -3,3 +3,46 @@
   border-bottom: 1px solid var(--lightgray);
   scroll-margin-top: 100px;
 }
+
+.global-summary {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin-bottom: var(--margin-l);
+  border-bottom: 1px solid var(--lightgray);
+
+  p {
+    line-height: 1.5rem;
+    color: var(--darkgray);
+
+    span {
+      font-family: Helvetica, Arial, sans-serif;
+      font-weight: bold;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: var(--margin-xs);
+    }
+
+    &:last-child {
+      margin-bottom: var(--margin-l);
+    }
+  }
+}
+
+.stat-blue {
+  color: var(--blue);
+}
+
+.stat-red {
+  color: var(--red);
+}
+
+.stat-black {
+  color: var(--black);
+}
+
+.stat-green {
+  color: var(--green);
+}

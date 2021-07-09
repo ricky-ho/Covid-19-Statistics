@@ -2,12 +2,13 @@
   display: flex;
   align-items: center;
   position: relative;
+  margin-bottom: 10px;
 }
 
 .filter-select {
-  font-size: var(--fontsize-s);
+  font-size: var(--fontsize-xs);
   height: 35px;
-  width: 200px;
+  max-width: 185px;
   border: 1px solid var(--lightgray);
   border-radius: 5px;
   padding: var(--padding-xs);
@@ -16,8 +17,8 @@
   transition: all 0.15s ease-in;
 
   option {
+    font-size: var(--fontsize-xs);
     background: var(--white);
-    font-size: var(--fontsize-s);
   }
 
   &:hover,

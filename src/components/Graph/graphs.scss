@@ -1,32 +1,35 @@
 .graph-container {
   position: relative;
+  margin-bottom: var(--margin-s);
 }
 
 .latest-info {
   position: absolute;
   display: flex;
   flex-direction: column;
-  width: 100%;
   text-align: left;
-  margin-left: var(--margin-xs);
+  background: var(--white);
   z-index: -1;
 
   p {
     display: flex;
     flex-direction: column;
-    width: 40%;
-    font-size: var(--fontsize-s);
+    width: 100%;
+    max-width: 150px;
+    font-size: var(--fontsize-xs);
     margin-bottom: var(--margin-s);
     color: var(--darkgray);
   }
 
   span {
-    font-size: var(--fontsize-m);
+    font-size: var(--fontsize-s);
     font-weight: bold;
     letter-spacing: 1px;
     color: var(--black);
   }
 }
+
+/* GRAPH CONTROL STYLES */
 
 .graph-control {
   display: flex;
@@ -35,6 +38,8 @@
   width: 100%;
 
   select {
+    font-size: var(--fontsize-xs);
+    max-width: 140px;
     outline: none;
     border: 1px solid var(--lightgray);
     border-radius: 5px;
@@ -50,5 +55,34 @@
 
   option {
     background: var(--white);
+  }
+}
+
+/* TOOLTIP STYLES */
+
+.custom-tooltip {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--lightgray);
+  background: var(--white);
+  max-width: 250px;
+  padding: var(--padding-s);
+}
+
+.label,
+.value {
+  font-size: var(--fontsize-xs);
+}
+
+.label {
+  font-weight: bold;
+  padding-bottom: var(--padding-xs);
+}
+
+.value {
+  span {
+    font-size: var(--fontsize-s);
+    font-weight: bold;
   }
 }

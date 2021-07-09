@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Loader from "./components/Loader";
 import { GlobalSection, CountrySection } from "./components/Sections";
 import { fetchData, getGlobalData, getCountriesData } from "./utils/api";
 
@@ -11,18 +12,18 @@ import "./App.scss";
   Features:
     Overall
     - Add config.js file to remove hardcoding graphs/data
-    - Add a loading icon on page load
 
     Header: 
     - Add box-shadow effect after scrolling down
 
     Global
-    - Finish the graphs for the global statistics
-    - Format the dates on the graph/tooltip
-    - Add hover effect on active bar
+    - Style the summary text
 
     Countries
     - Add accordion graph to country table on click
+
+    Navigation
+    - Add Github and Source Links
 
   - Add responsiveness
   - Check iOS compatibility
@@ -40,13 +41,16 @@ const App = () => {
     initialLoad();
   }, []);
 
-  var content = data ? (
+  let content = data ? (
     <>
       <GlobalSection data={getGlobalData(data.all_data)} />
       <CountrySection data={getCountriesData(data.latest_data)} />
     </>
-  ) : null;
-  // Add a loading component
+  ) : (
+    <>
+      <Loader />
+    </>
+  );
 
   return (
     <div className="App">

@@ -13,6 +13,7 @@
 
 .country-table__controls {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-bottom: var(--margin-m);
 }
@@ -26,7 +27,7 @@
     margin-bottom: var(--margin-s);
   }
 
-  h4 {
+  h3 {
     width: 100%;
     font-weight: normal;
     font-size: var(--fontsize-m);
@@ -46,6 +47,12 @@
     width: 100%;
   }
 
+  tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
+
   th {
     color: var(--darkgray);
     text-align: left;
@@ -55,7 +62,7 @@
 
   td {
     min-width: 75px;
-    text-align: right;
+    text-align: left;
   }
 }
 

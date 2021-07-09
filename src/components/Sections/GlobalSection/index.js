@@ -1,5 +1,6 @@
 import Graph from "../../Graph";
-import { convertToLocaleString } from "../../../utils/format";
+import GlobalSummary from "./GlobalSummary";
+import { formatNumber } from "../../../utils/format";
 
 import "./globalsection.scss";
 
@@ -10,47 +11,47 @@ const GlobalSection = ({ data }) => {
   const cases = [
     {
       description: "total cases",
-      data: convertToLocaleString(latest.total_cases),
+      data: formatNumber(latest.total_cases),
     },
     {
       description: "new cases",
-      data: convertToLocaleString(latest.new_cases),
+      data: formatNumber(latest.new_cases),
     },
   ];
 
   const deaths = [
     {
       description: "total deaths",
-      data: convertToLocaleString(latest.total_deaths),
+      data: formatNumber(latest.total_deaths),
     },
     {
       description: "new deaths",
-      data: convertToLocaleString(latest.new_deaths),
+      data: formatNumber(latest.new_deaths),
     },
   ];
 
   const vaccinations = [
     {
       description: "vaccines administered",
-      data: convertToLocaleString(latest.total_vaccinations),
+      data: formatNumber(latest.total_vaccinations),
     },
     {
       description: "people received at least 1 vaccine dose",
-      data: convertToLocaleString(latest.people_vaccinated),
+      data: formatNumber(latest.people_vaccinated),
     },
     {
       description: "people fully vaccinated",
-      data: convertToLocaleString(latest.people_fully_vaccinated),
+      data: formatNumber(latest.people_fully_vaccinated),
     },
   ];
 
   return (
     <section id="global">
       <h2>Global Statistics</h2>
-
+      <GlobalSummary data={latest} />
       <Graph
         title="Cases"
-        theme="rgb(90, 90, 90)"
+        theme="rgba(100, 100, 100, 0.5)"
         options={[
           { label: "Cumulative", value: "total_cases" },
           { label: "Daily", value: "new_cases" },
@@ -60,7 +61,7 @@ const GlobalSection = ({ data }) => {
       />
       <Graph
         title="Deaths"
-        theme="rgb(192, 26, 8)"
+        theme="rgba(100, 100, 100, 0.5)"
         options={[
           { label: "Cumulative", value: "total_deaths" },
           { label: "Daily", value: "new_deaths" },
@@ -70,7 +71,7 @@ const GlobalSection = ({ data }) => {
       />
       <Graph
         title="Vaccinations"
-        theme="rgb(0, 90, 0)"
+        theme="rgba(100, 100, 100, 0.5)"
         options={[
           { label: "Vaccines administered", value: "total_vaccinations" },
           { label: "People vaccinated", value: "people_vaccinated" },
