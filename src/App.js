@@ -13,17 +13,11 @@ import "./App.scss";
     Overall
     - Add config.js file to remove hardcoding graphs/data
 
-    Header: 
-    - Add box-shadow effect after scrolling down
-
     Global
-    - Style the summary text
+    - Change summary text to summary cards
 
     Countries
     - Add accordion graph to country table on click
-
-    Navigation
-    - Add Github and Source Links
 
   - Add responsiveness
   - Check iOS compatibility
@@ -31,7 +25,7 @@ import "./App.scss";
 */
 
 const App = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const initialLoad = async () => {

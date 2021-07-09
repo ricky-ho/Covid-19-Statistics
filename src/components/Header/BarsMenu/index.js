@@ -30,7 +30,11 @@ const BarMenu = ({ showBarsMenu, toggle }) => {
           <p>
             Source:{" "}
             <span>
-              <a href="https://ourworldindata.org/coronavirus">
+              <a
+                href="https://ourworldindata.org/coronavirus"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Our World in Data
               </a>
             </span>
