@@ -13,9 +13,6 @@ import "./App.scss";
     Overall
     - Add config.js file to remove hardcoding graphs/data
 
-    Global
-    - Change summary text to summary cards
-
     Countries
     - Add accordion graph to country table on click
 

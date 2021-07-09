@@ -6,7 +6,7 @@ import "./globalsection.scss";
 
 const GlobalSection = ({ data }) => {
   const timeline = data.data;
-  const latest = timeline[timeline.length - 2];
+  const latest = timeline[timeline.length - 1];
 
   const cases = [
     {

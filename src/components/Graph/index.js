@@ -28,7 +28,7 @@ const Graph = ({ title, theme, options, data, latest }) => {
         ))}
       </div>
       <GraphControl options={options} handleDataChange={handleDataChange}>
-        <ResponsiveContainer width={"100%"} height={300}>
+        <ResponsiveContainer width={"100%"} height={250}>
           <BarChart data={data} margin={{ top: 20, bottom: 20, left: 10 }}>
             <XAxis
               dataKey="date"
@@ -41,7 +41,7 @@ const Graph = ({ title, theme, options, data, latest }) => {
               orientation="right"
               tickFormatter={formatGraphTick}
               tick={{ fontSize: 12 }}
-              padding={{ top: 10 }}
+              padding={{ top: 15 }}
             />
             <Tooltip
               content={<CustomTooltip />}

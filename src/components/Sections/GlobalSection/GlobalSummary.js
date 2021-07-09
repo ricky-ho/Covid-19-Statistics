@@ -5,36 +5,49 @@ import "./globalsection.scss";
 const GlobalSummary = ({ data }) => {
   return (
     <div className="global-summary">
-      <p>
-        As of <span className="stat-black">{formatDate(data.date)}</span>, there
-        have been a total of{" "}
-        <span className="stat-red">{`${formatNumber(
-          data.total_cases
-        )} confirmed cases`}</span>{" "}
-        and{" "}
-        <span className="stat-red">{`${formatNumber(
-          data.total_deaths
-        )} confirmed deaths`}</span>
-        .
-      </p>
-      <p>
-        <span className="stat-green">{`${formatNumber(
-          data.total_vaccinations
-        )} vaccines`}</span>{" "}
-        have been administered globally with{" "}
-        <span className="stat-green">{`${formatNumber(
-          data.new_vaccinations
-        )} vaccines`}</span>{" "}
-        administered today.
-      </p>
-      <p>
-        <span className="stat-blue">
-          {data.people_fully_vaccinated_per_hundred}%
-        </span>{" "}
-        of the population has been fully vaccinated and{" "}
-        <span className="stat-blue">{data.people_vaccinated_per_hundred}%</span>{" "}
-        has received at least one vaccine dose.
-      </p>
+      <h3>
+        Information as of: <span>{formatDate(data.date)}</span>
+      </h3>
+      <div className="summary__card">
+        <p>
+          <span className="text-red">{formatNumber(data.total_cases)}</span>
+          confirmed cases
+        </p>
+      </div>
+      <div className="summary__card">
+        <p>
+          <span className="text-red">{formatNumber(data.total_deaths)}</span>{" "}
+          confirmed deaths
+        </p>
+      </div>
+      <div className="summary__card">
+        <p>
+          <span className="text-green">
+            {formatNumber(data.total_vaccinations)}
+          </span>
+          vaccine doses administered globally
+        </p>
+      </div>
+      <div className="summary__card">
+        <p>
+          <span className="text-green">
+            {formatNumber(data.new_vaccinations)}
+          </span>
+          vaccine doses administered today
+        </p>
+      </div>
+      <div className="summary__card">
+        <p>
+          <span className="text-blue">{`${data.people_fully_vaccinated_per_hundred}%`}</span>
+          of the population fully vaccinated
+        </p>
+      </div>
+      <div className="summary__card">
+        <p>
+          <span className="text-blue">{`${data.people_vaccinated_per_hundred}%`}</span>
+          of the population received at least 1 vaccine dose
+        </p>
+      </div>
     </div>
   );
 };
