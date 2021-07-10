@@ -49,7 +49,7 @@
   width: 50%;
   max-width: 300px;
   height: 100%;
-  background: rgb(242, 242, 242);
+  background: var(--white);
   transition: all 0.2s ease-in-out;
   z-index: 99;
 
@@ -66,11 +66,15 @@
   li {
     width: 100%;
     text-align: center;
-    background: var(--black);
+    background: var(--red);
     border-radius: 5px;
 
     &:not(:last-child) {
       margin-bottom: var(--margin-s);
+    }
+
+    &:hover {
+      background: var(--lightred);
     }
 
     a {
@@ -84,6 +88,11 @@
   }
 }
 
+.active {
+  right: 0;
+  box-shadow: 0 0 8px 0 var(--darkgray);
+}
+
 .close-icon {
   cursor: pointer;
   position: absolute;
@@ -94,11 +103,6 @@
   &:hover {
     color: var(--red);
   }
-}
-
-.active {
-  right: 0;
-  box-shadow: 0 0 8px 0 var(--darkgray);
 }
 
 .source-links {

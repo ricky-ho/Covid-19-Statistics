@@ -7,7 +7,7 @@
   background: var(--white);
   width: 100%;
   min-height: 400px;
-  font-size: var(--fontsize-xs);
+  font-size: var(--fontsize-s);
   overflow: auto;
 }
 
@@ -19,50 +19,60 @@
 }
 
 .country-card {
-  padding: var(--padding-m);
   border: 1px solid var(--lightgray);
-  border-radius: 5px;
+  border-radius: 10px;
+  overflow: hidden;
 
   &:not(:last-child) {
     margin-bottom: var(--margin-s);
   }
 
-  h3 {
+  h4 {
     width: 100%;
+    letter-spacing: 1px;
     font-weight: normal;
     font-size: var(--fontsize-m);
-    margin-bottom: var(--margin-xs);
+    padding: var(--padding-s) var(--padding-m);
+    background: var(--lightred);
+    color: var(--white);
   }
 }
 
 .card__inner {
   display: flex;
+  padding: var(--padding-s) var(--padding-m);
 
   :nth-child(1) {
     max-width: 150px;
-    margin-right: var(--margin-m);
-  }
-
-  table {
-    width: 100%;
+    margin-right: var(--margin-s);
   }
 
   tr {
     display: flex;
     flex-direction: column;
-    margin-bottom: 5px;
+
+    :not(:first-child) {
+      padding-top: 1px;
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: 10px;
+    }
+  }
+
+  th,
+  td {
+    text-align: left;
   }
 
   th {
     color: var(--darkgray);
-    text-align: left;
     font-weight: normal;
-    padding: var(--padding-xs) 0;
   }
 
   td {
-    min-width: 75px;
-    text-align: left;
+    font-family: Helvetica, Arial, sans-serif;
+    color: var(--red);
   }
 }
 

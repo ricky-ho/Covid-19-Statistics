@@ -35,10 +35,10 @@
 
 .summary__card {
   width: 100%;
-  padding: var(--padding-l);
+  padding: var(--padding-m);
   text-align: center;
-  border: 1px solid var(--lightgray);
   border-radius: 10px;
+  border: 1px solid var(--lightgray);
   margin-bottom: var(--margin-s);
   background-color: var(--white);
 
@@ -48,6 +48,7 @@
 
   span {
     font-size: var(--fontsize-m);
+    color: var(--red);
   }
 
   p {
@@ -56,16 +57,4 @@
     color: var(--darkgray);
     font-size: var(--fontsize-s);
   }
-}
-
-.text-red {
-  color: var(--red);
-}
-
-.text-green {
-  color: var(--green);
-}
-
-.text-blue {
-  color: var(--blue);
 }

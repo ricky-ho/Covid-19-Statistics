@@ -8,12 +8,13 @@ import "./countrysection.scss";
 const CountrySection = ({ data }) => {
   const [countryData, setCountryData] = useState(data);
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortAscending, setSortAscending] = useState(true);
-  const [sortValue, setSortValue] = useState("location");
+  const [sortAscending, setSortAscending] = useState(false);
+  const [sortValue, setSortValue] = useState("total_cases");
 
   useEffect(() => {
     const filterDataByQuery = (country) => {
       if (searchQuery === "") return country;
+
       let reg = new RegExp(searchQuery, "gi");
       return reg.test(country.location);
     };
@@ -41,6 +42,7 @@ const CountrySection = ({ data }) => {
       <div className="country-table__controls">
         <Filter
           ascending={sortAscending}
+          sortValue={sortValue}
           toggleAscending={toggleAscending}
           handleChange={setSortValue}
         />
@@ -64,9 +66,7 @@ const Country = ({ data }) => {
     date: data.last_updated_date,
     population: formatNumber(data.population),
     total_cases: formatNumber(data.total_cases),
-    new_cases: formatNumber(data.new_cases),
     total_deaths: formatNumber(data.total_deaths),
-    new_deaths: formatNumber(data.new_deaths),
     people_vaccinated: formatNumber(data.people_vaccinated),
     people_fully_vaccinated: formatNumber(data.people_fully_vaccinated),
     people_fully_vaccinated_per_hundred:
@@ -76,8 +76,7 @@ const Country = ({ data }) => {
   return (
     <>
       <div data-country={data.location} className="country-card">
-        <h3>{data.location}</h3>
-
+        <h4>{data.location}</h4>
         <div className="card__inner">
           <table>
             <tbody>

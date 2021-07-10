@@ -2,7 +2,8 @@ import { HiSortAscending, HiSortDescending } from "react-icons/hi";
 
 import "./filter.scss";
 
-const Filter = ({ ascending, toggleAscending, handleChange }) => {
+const Filter = ({ ascending, sortValue, toggleAscending, handleChange }) => {
+  console.log(sortValue);
   return (
     <div className="filter-container">
       {ascending ? (
@@ -20,11 +21,12 @@ const Filter = ({ ascending, toggleAscending, handleChange }) => {
       )}
       <select
         className="filter-select"
+        value={sortValue}
         onChange={(e) => handleChange(e.target.value)}
       >
         <option value="location">Alphabetical</option>
-        <option value="population">Population</option>
         <option value="total_cases">Cases</option>
+        <option value="population">Population</option>
         <option value="total_deaths">Deaths</option>
         <option value="people_vaccinated">People Vaccinated</option>
         <option value="people_fully_vaccinated">People Fully Vaccinated</option>
