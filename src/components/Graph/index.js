@@ -13,7 +13,7 @@ import {
 
 import "./graphs.scss";
 
-const Graph = ({ title, theme, options, data, latest }) => {
+const Graph = ({ title, options, data, latest }) => {
   const [graphData, setGraphData] = useState(options[0].value);
 
   const handleDataChange = (e) => setGraphData(e.target.value);
@@ -29,7 +29,7 @@ const Graph = ({ title, theme, options, data, latest }) => {
       </div>
       <GraphControl options={options} handleDataChange={handleDataChange}>
         <ResponsiveContainer width={"100%"} height={250}>
-          <BarChart data={data} margin={{ top: 20, bottom: 20, left: 10 }}>
+          <BarChart data={data} margin={{ top: 20, bottom: 30, left: 10 }}>
             <XAxis
               dataKey="date"
               interval="preserveStart"
@@ -45,11 +45,13 @@ const Graph = ({ title, theme, options, data, latest }) => {
             />
             <Tooltip
               content={<CustomTooltip />}
+              position={{ y: 200 }}
               cursor={{ fill: "rgb(192, 26, 8)" }}
             />
             <Bar
               dataKey={graphData}
               fill="rgba(100, 100, 100, 0.5)"
+              minPointSize={2}
               isAnimationActive={false}
             />
           </BarChart>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { formatNumber } from "../../../utils/format";
-import Searchbar from "../../Searchbar";
-import Filter from "../../Filter";
+import Searchbar from "./Searchbar";
+import Filter from "./Filter";
 
 import "./countrysection.scss";
 
@@ -51,7 +51,7 @@ const CountrySection = ({ data }) => {
       <div role="table" className="country-table">
         {countryData.length ? (
           countryData.sort(customSort).map((country, index) => {
-            return <Country key={index} data={country} />;
+            return <CountryCard key={index} data={country} />;
           })
         ) : (
           <div className="no-results">No results found!</div>
@@ -61,7 +61,7 @@ const CountrySection = ({ data }) => {
   );
 };
 
-const Country = ({ data }) => {
+const CountryCard = ({ data }) => {
   const filtered_data = {
     date: data.last_updated_date,
     population: formatNumber(data.population),

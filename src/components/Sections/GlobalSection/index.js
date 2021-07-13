@@ -8,7 +8,7 @@ const GlobalSection = ({ data }) => {
   const timeline = data.data;
   const latest = timeline[timeline.length - 1];
 
-  const cases = [
+  const latest_cases = [
     {
       description: "total cases",
       data: formatNumber(latest.total_cases),
@@ -19,7 +19,7 @@ const GlobalSection = ({ data }) => {
     },
   ];
 
-  const deaths = [
+  const latest_deaths = [
     {
       description: "total deaths",
       data: formatNumber(latest.total_deaths),
@@ -30,7 +30,7 @@ const GlobalSection = ({ data }) => {
     },
   ];
 
-  const vaccinations = [
+  const latest_vaccinations = [
     {
       description: "vaccines administered",
       data: formatNumber(latest.total_vaccinations),
@@ -51,27 +51,24 @@ const GlobalSection = ({ data }) => {
       <GlobalSummary data={latest} />
       <Graph
         title="Cases"
-        theme="rgba(100, 100, 100, 0.5)"
         options={[
           { label: "Cumulative", value: "total_cases" },
           { label: "Daily", value: "new_cases" },
         ]}
         data={timeline}
-        latest={cases}
+        latest={latest_cases}
       />
       <Graph
         title="Deaths"
-        theme="rgba(100, 100, 100, 0.5)"
         options={[
           { label: "Cumulative", value: "total_deaths" },
           { label: "Daily", value: "new_deaths" },
         ]}
         data={timeline}
-        latest={deaths}
+        latest={latest_deaths}
       />
       <Graph
         title="Vaccinations"
-        theme="rgba(100, 100, 100, 0.5)"
         options={[
           { label: "Vaccines administered", value: "total_vaccinations" },
           { label: "People vaccinated", value: "people_vaccinated" },
@@ -81,7 +78,7 @@ const GlobalSection = ({ data }) => {
           },
         ]}
         data={timeline.filter((item) => item.total_vaccinations >= 0)}
-        latest={vaccinations}
+        latest={latest_vaccinations}
       />
     </section>
   );

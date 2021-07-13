@@ -100,7 +100,8 @@
   right: 25px;
   color: var(--black);
 
-  &:hover {
+  &:hover,
+  &:active {
     color: var(--red);
   }
 }

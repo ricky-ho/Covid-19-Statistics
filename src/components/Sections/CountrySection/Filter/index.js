@@ -3,7 +3,6 @@ import { HiSortAscending, HiSortDescending } from "react-icons/hi";
 import "./filter.scss";
 
 const Filter = ({ ascending, sortValue, toggleAscending, handleChange }) => {
-  console.log(sortValue);
   return (
     <div className="filter-container">
       {ascending ? (

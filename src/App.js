@@ -10,15 +10,11 @@ import "./App.scss";
 
 /* 
   Features:
-    Overall
-    - Add config.js file to remove hardcoding graphs/data
-
-    Countries
-    - Add accordion graph to country table on click
+    Header/Nav
+    - Add desktop navigation 
 
   - Add responsiveness
   - Check iOS compatibility
-  
 */
 
 const App = () => {

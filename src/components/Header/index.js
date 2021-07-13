@@ -9,7 +9,7 @@ const Header = () => {
   const [scrollDirection, setScrollDirection] = useState(null);
 
   useEffect(() => {
-    if (showBarsMenu) {
+    if (showBarsMenu && scrollDirection === "down") {
       setShowBarsMenu(false);
     }
 
@@ -32,7 +32,7 @@ const Header = () => {
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
-  }, [scrollDirection]);
+  }, [scrollDirection, showBarsMenu]);
 
   const toggleBarsMenu = () => setShowBarsMenu(!showBarsMenu);
 

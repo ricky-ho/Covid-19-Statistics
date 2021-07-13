@@ -7,7 +7,7 @@
 
 .filter-select {
   font-size: var(--fontsize-xs);
-  height: 35px;
+  height: 40px;
   max-width: 185px;
   border: 1px solid var(--lightgray);
   border-radius: 5px;
@@ -35,5 +35,29 @@
 
   &:hover {
     color: var(--lightblue);
+  }
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 425px) {
+  .filter-select {
+    font-size: var(--fontsize-s);
+  }
+
+  option {
+    font-size: var(--fontsize-s);
+  }
+}
+
+@media screen and (min-width: 550px) {
+  .filter-container {
+    margin-bottom: 0;
+    margin-right: var(--margin-m);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .filter-select option {
+    font-size: var(--fontsize-s);
   }
 }

@@ -2,6 +2,7 @@ footer {
   display: flex;
   height: 100px;
   padding: var(--padding-l);
+  margin-top: 50px;
   align-items: flex-end;
 
   p {
@@ -32,4 +33,18 @@ footer {
   align-items: center;
   font-size: var(--fontsize-xs);
   color: var(--black);
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 768px) {
+  footer {
+    padding: var(--padding-l) var(--padding-xl);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  footer {
+    padding: var(--padding-l) var(--padding-xxl);
+  }
 }
