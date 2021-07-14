@@ -33,21 +33,21 @@
   padding: var(--padding-m);
   text-align: center;
   border-radius: 10px;
-  border: 1px solid var(--lightgray);
   margin-bottom: var(--margin-s);
-  background-color: var(--white);
+  background-color: var(--darkred);
 
   p {
     display: flex;
     flex-direction: column;
-    color: var(--darkgray);
+    color: var(--white);
     font-size: var(--fontsize-s);
 
     span {
       font-family: Helvetica, Arial, sans-serif;
       font-size: var(--fontsize-m);
       font-weight: bold;
-      color: var(--red);
+      color: var(--white);
+      margin-bottom: var(--margin-xs);
     }
   }
 }

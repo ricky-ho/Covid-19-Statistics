@@ -136,3 +136,17 @@
     font-size: var(--fontsize-s);
   }
 }
+
+@media screen and (min-width: 1024px) {
+  div[data-graph="Vaccinations"] {
+    .latest-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+  }
+
+  .latest-info span {
+    font-size: var(--fontsize-xl);
+  }
+}
