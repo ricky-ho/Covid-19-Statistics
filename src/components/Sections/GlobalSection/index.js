@@ -5,6 +5,8 @@ import { formatNumber } from "../../../utils/format";
 import "./globalsection.scss";
 
 const GlobalSection = ({ data }) => {
+  if (!data) return <div></div>;
+
   const timeline = data.data;
   const latest = timeline[timeline.length - 1];
 

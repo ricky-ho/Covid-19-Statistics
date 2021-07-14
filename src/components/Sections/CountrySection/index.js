@@ -12,6 +12,8 @@ const CountrySection = ({ data }) => {
   const [sortValue, setSortValue] = useState("total_cases");
 
   useEffect(() => {
+    if (data == null) return;
+
     const filterDataByQuery = (country) => {
       if (searchQuery === "") return country;
 
@@ -49,7 +51,7 @@ const CountrySection = ({ data }) => {
         <Searchbar query={searchQuery} handleChange={setSearchQuery} />
       </div>
       <div role="table" className="country-table">
-        {countryData.length ? (
+        {countryData ? (
           countryData.sort(customSort).map((country, index) => {
             return <CountryCard key={index} data={country} />;
           })
@@ -62,7 +64,7 @@ const CountrySection = ({ data }) => {
 };
 
 const CountryCard = ({ data }) => {
-  const filtered_data = {
+  const _data = {
     date: data.last_updated_date,
     population: formatNumber(data.population),
     total_cases: formatNumber(data.total_cases),
@@ -82,15 +84,15 @@ const CountryCard = ({ data }) => {
             <tbody>
               <tr>
                 <th>Population</th>
-                <td>{filtered_data.population || "-"}</td>
+                <td>{_data.population || "-"}</td>
               </tr>
               <tr>
                 <th>Cases</th>
-                <td>{filtered_data.total_cases}</td>
+                <td>{_data.total_cases}</td>
               </tr>
               <tr>
                 <th>Deaths</th>
-                <td>{filtered_data.total_deaths}</td>
+                <td>{_data.total_deaths}</td>
               </tr>
             </tbody>
           </table>
@@ -98,17 +100,17 @@ const CountryCard = ({ data }) => {
             <tbody>
               <tr>
                 <th>People Vaccinated</th>
-                <td>{filtered_data.people_vaccinated}</td>
+                <td>{_data.people_vaccinated}</td>
               </tr>
               <tr>
                 <th>People Fully Vaccinated</th>
-                <td>{filtered_data.people_fully_vaccinated}</td>
+                <td>{_data.people_fully_vaccinated}</td>
               </tr>
               <tr>
                 <th>% Fully Vaccinated</th>
                 <td>
-                  {filtered_data.people_fully_vaccinated_per_hundred
-                    ? `${filtered_data.people_fully_vaccinated_per_hundred}%`
+                  {_data.people_fully_vaccinated_per_hundred
+                    ? `${_data.people_fully_vaccinated_per_hundred}%`
                     : "-"}
                 </td>
               </tr>

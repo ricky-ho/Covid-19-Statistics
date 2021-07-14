@@ -1,11 +1,3 @@
-/* 
-  COVID ALL DATA:         https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.json
-  COVID ALL VACCINATIONS: https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.json
-
-  COVID LATEST DATA:      https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json
-
-*/
-
 export const fetchData = async () => {
   try {
     const latest_data = await fetchLatestData();
@@ -13,15 +5,20 @@ export const fetchData = async () => {
 
     return { latest_data, all_data };
   } catch {
-    console.warn("Unable to fetch data");
+    console.error("Error: Unable to fetch covid data");
+    return { error: true };
   }
 };
 
-export const getGlobalData = (data) => {
+export const filterGlobalData = (data) => {
+  if (data == null) return;
+
   return data.OWID_WRL;
 };
 
-export const getCountriesData = (data) => {
+export const filterCountryData = (data) => {
+  if (data == null) return;
+
   const results = [];
   for (let obj in data) {
     if (obj.match(/\b\w*owid\w*\b/gi)) continue;
@@ -37,12 +34,9 @@ const fetchLatestData = async () => {
     "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.json"
   );
 
-  if (!response.ok) {
-    return null;
-  }
+  if (!response.ok) return null;
 
-  const data = await response.json();
-  return data;
+  return response.json();
 };
 
 const fetchAllData = async () => {
@@ -50,10 +44,7 @@ const fetchAllData = async () => {
     "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.json"
   );
 
-  if (!response.ok) {
-    return null;
-  }
+  if (!response.ok) return null;
 
-  const data = await response.json();
-  return data;
+  return response.json();
 };
