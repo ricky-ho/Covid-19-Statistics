@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 
 import "./searchbar.scss";
 
 const Searchbar = ({ query, handleChange }) => {
+  const [isFocused, setIsFocused] = useState(false);
   return (
     <form
       className="search-form"
@@ -10,8 +12,14 @@ const Searchbar = ({ query, handleChange }) => {
       onSubmit={(e) => e.preventDefault()}
       autoComplete="off"
     >
-      <div>
-        <BiSearchAlt2 className="bi-search" size={25} />
+      <div
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        className={`${isFocused ? "input__focused" : ""}`}
+      >
+        <span>
+          <BiSearchAlt2 className="bi-search" size={20} />
+        </span>
         <input
           id="search"
           type="text"

@@ -43,7 +43,7 @@ const App = () => {
     return (
       <div>
         <strong>Server Error:</strong> Please try again later or contact me at
-        horicky2016@gmail.com
+        horicky.cs@gmail.com about the issue. Thanks!
       </div>
     );
   }

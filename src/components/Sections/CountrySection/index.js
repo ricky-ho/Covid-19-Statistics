@@ -51,7 +51,7 @@ const CountrySection = ({ data }) => {
         <Searchbar query={searchQuery} handleChange={setSearchQuery} />
       </div>
       <div role="table" className="country-table">
-        {countryData ? (
+        {countryData.length > 0 ? (
           countryData.sort(customSort).map((country, index) => {
             return <CountryCard key={index} data={country} />;
           })
