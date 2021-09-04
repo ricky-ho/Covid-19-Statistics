@@ -34,10 +34,6 @@ const GlobalSection = ({ data }) => {
 
   const latest_vaccinations = [
     {
-      description: "vaccines administered",
-      data: formatNumber(latest.total_vaccinations),
-    },
-    {
       description: "people received at least 1 vaccine dose",
       data: formatNumber(latest.people_vaccinated),
     },

@@ -44,7 +44,12 @@ main {
   width: 100%;
   min-height: 95vh;
   margin-top: 100px;
-  padding: var(--padding-m);
+  padding: 0 var(--padding-m);
+}
+
+section {
+  padding-top: 50px;
+  scroll-margin-top: 75px;
 }
 
 h2 {
@@ -69,7 +74,7 @@ h2 {
 
 @media screen and (min-width: 425px) {
   main {
-    padding: var(--padding-m) var(--padding-l);
+    padding: 0 var(--padding-l);
   }
 
   h2 {
@@ -79,7 +84,7 @@ h2 {
 
 @media screen and (min-width: 768px) {
   main {
-    padding: var(--padding-m) var(--padding-xl);
+    padding: 0 var(--padding-xl);
   }
 }
 
@@ -91,6 +96,6 @@ h2 {
 
 @media screen and (min-width: 1280px) {
   main {
-    padding: var(--padding-m) var(--padding-xxl);
+    padding: 0 var(--padding-xxl);
   }
 }
