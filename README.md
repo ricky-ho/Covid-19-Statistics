@@ -5,6 +5,10 @@ Check out the application at [https://statistics-covid19.netlify.app/](https://s
 ## Description
 View the latest COVID-19 statistics as reported by [Our World in Data](https://ourworldindata.org/coronavirus). Data includes the cumulative and daily number of COVID-19 cases, deaths, and vaccinations. Users will be able to search for countries and sort the country data via different parameters including population, number of cases, number of deaths, etc.
 
+## Future Improvements
+- Add user interactivity to charts to calculate the change in stats between two data points (or datetimes)
+- Refine the global data chart UI and change the appearance of the hover effects
+
 ## Dependencies
 - [recharts.js](https://recharts.org/en-US/)
 - [moment.js](https://momentjs.com/)
